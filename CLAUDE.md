@@ -16,7 +16,7 @@
 |----------|------|------|------|
 | AlgoNotion | in-progress | 2026-04-30 | AlgoNotion_FE / AlgoNotion_BE |
 | TalkTime | in-progress | — | TalkTime/ |
-| AI-Hack-Camp-2026 | **🔴 마감 임박** | 2026-04-24 | 없음 |
+| AI-Hack-Camp-2026 | archived | 2026-04-24 | 없음 |
 | local-dev-dashboard | todo | 2026-05-11 | 없음 |
 
 ## 디렉토리 구조
@@ -37,7 +37,6 @@ WorkSpace/
 ├── archive/                ← 완료·중단된 프로젝트
 ├── logs/
 │   └── log-{member}.jsonl  ← 멤버별 작업 로그
-├── ideas/                  ← 아이디어·Inbox 노트
 ├── tasks/                  ← 오늘의 명세서 (gitignore)
 ├── analysis/               ← 분석 리포트
 ├── AlgoNotion_FE/          ← Chrome Extension (Vanilla JS)
@@ -46,6 +45,7 @@ WorkSpace/
 │   ├── client/
 │   └── server/
 └── LLM_wiki/               ← Obsidian vault (서브모듈)
+    └── sources/ideas/      ← 아이디어·Inbox 노트 (구 WorkSpace/ideas/)
 ```
 
 ## 초기 설정 (최초 1회)
@@ -71,8 +71,10 @@ cp config.local.json.example config.local.json
 
 | 커맨드 | 설명 | 실행 위치 |
 |--------|------|----------|
-| `/전체클론` | 모든 서브모듈 클론 | WorkSpace 루트 |
-| `/작업시작 {id}` | 명세서 자동생성 + 태스크 시작 (id 없으면 명세서만 출력) | 프로젝트 폴더 |
+| `/전체클론` | 모든 서브모듈 클론 (최초 1회) | WorkSpace 루트 |
+| `/전체풀` | 루트 + 모든 서브모듈 최신화 | WorkSpace 루트 |
+| `/오늘할일` | 오늘 명세서 생성 + 번호 포함 출력 | WorkSpace 루트 |
+| `/작업시작 {id}` | 태스크 시작 — 번호(`1`) 또는 전체 ID(`AlgoNotion-Store`) 모두 가능 | WorkSpace 루트 |
 | `/작업완료 {id}` | 태스크 완료 + 하루 요약 + git push | 프로젝트 폴더 |
 | `/분석` | 팀 로그 패턴 분석 | WorkSpace 루트 |
 | `/스킬생성 {이름}` | 반복 패턴 스킬 문서화 | WorkSpace 루트 |
@@ -84,12 +86,6 @@ cp config.local.json.example config.local.json
 - Chrome Extension 개발 원칙
 - API 연동 체크리스트
 - DOM/JS 패턴 등
-
-### ideas/
-아이디어 메모, 조사 노트. 아직 구체화되지 않은 것들.
-- 수익화 아이디어
-- 신규 프로젝트 아이디어
-- 기술 조사 노트
 
 ### resources/
 외부 참고 자료.
@@ -113,6 +109,8 @@ cp config.local.json.example config.local.json
 개인 지식 위키 (Karpathy 스타일). 기술 원칙·디버그 패턴·참고 자료 보관.
 - `wiki/` — 합성된 지식 페이지 (구 skills/)
 - `sources/` — 원본 참고 문서 (구 resources/)
+- `sources/ideas/` — 아이디어·Inbox 노트 (수익화 아이디어, 신규 프로젝트, 기술 조사)
+- inbox → literature → wiki/ 흐름으로 점진적 합성
 - `/인제스트`, `/쿼리`, `/린트` 커맨드로 운영
 
 ## 충돌 방지 규칙

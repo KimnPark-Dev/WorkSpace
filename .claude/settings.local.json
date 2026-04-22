@@ -6,7 +6,11 @@
       "Bash(mkdir -p /Users/gim-insong/Desktop/WorkSpace/skills)",
       "Bash(mkdir -p /Users/gim-insong/Desktop/WorkSpace/tasks)",
       "Bash(mkdir -p /Users/gim-insong/Desktop/WorkSpace/analysis)",
-      "Bash(curl -s https://gist.githubusercontent.com/karpathy/442a6bf555914893e9891c11519de94f/raw)"
+      "Bash(curl -s https://gist.githubusercontent.com/karpathy/442a6bf555914893e9891c11519de94f/raw)",
+      "Bash(git add *)",
+      "Bash(git commit *)",
+      "Bash(git push *)",
+      "Bash(git submodule *)"
     ]
   }
 }
