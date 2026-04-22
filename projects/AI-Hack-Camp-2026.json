@@ -1,0 +1,31 @@
+{
+  "id": "AI-Hack-Camp-2026",
+  "title": "AI Hack Camp 2026",
+  "status": "in-progress",
+  "due": "2026-04-24",
+  "repo": null,
+  "paths": {},
+  "members": ["ssong", "dohyun", "taeho"],
+  "tags": ["competition", "AI", "hackathon"],
+  "description": "과학기술정보통신부 주최 AI 혁신 솔루션 해커톤. 마감 임박 — 기획서 제출 필요",
+  "tasks": [
+    {
+      "id": "Hackathon-Idea",
+      "title": "팀원 아이디어 회의 + 분야 확정",
+      "path": ".",
+      "member": "ssong",
+      "priority": "high",
+      "estimate_h": 2,
+      "background": "마감 2026-04-24. 디지털 헬스/안전/포용/교육 중 분야 선택"
+    },
+    {
+      "id": "Hackathon-Proposal",
+      "title": "기획서 7개 항목 작성 및 제출",
+      "path": ".",
+      "member": "ssong",
+      "priority": "high",
+      "estimate_h": 4,
+      "background": "제안배경·AI윤리·핵심아이디어·기술스택·아키텍처·개발계획·기대효과"
+    }
+  ]
+}

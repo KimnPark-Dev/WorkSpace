@@ -1,0 +1,30 @@
+{
+  "id": "local-dev-dashboard",
+  "title": "Local Dev Activity Dashboard",
+  "status": "todo",
+  "due": "2026-05-11",
+  "repo": null,
+  "paths": {},
+  "members": ["ssong"],
+  "tags": ["python", "react", "fastapi", "sqlite"],
+  "description": "Obsidian md·shell history·git 로그 분석 로컬 대시보드. 레포 미생성",
+  "tasks": [
+    {
+      "id": "Dashboard-Init",
+      "title": "GitHub 레포 생성 + 초기 구조 세팅",
+      "path": ".",
+      "member": "ssong",
+      "priority": "medium",
+      "estimate_h": 1
+    },
+    {
+      "id": "Dashboard-Parser",
+      "title": "Obsidian md 스캐너 + 링크 파서 구현",
+      "path": ".",
+      "member": "ssong",
+      "priority": "medium",
+      "estimate_h": 4,
+      "background": "[[링크|별칭]], ![[임베드]], [[#^블록참조]] 다양한 형식 대응 필요"
+    }
+  ]
+}

@@ -1,0 +1,5 @@
+{
+  "ssong": { "name": "인송", "role": "FE/BE 개발" },
+  "dohyun": { "name": "도현", "role": "인프라/DevOps" },
+  "taeho": { "name": "태호", "role": "기능 조사/확장" }
+}

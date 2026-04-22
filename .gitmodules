@@ -1,0 +1,12 @@
+[submodule "LLM_wiki"]
+	path = LLM_wiki
+	url = git@github.com:KimnPark-Dev/LLM-wiki.git
+[submodule "AlgoNotion_FE"]
+	path = AlgoNotion_FE
+	url = git@github.com:KimnPark-Dev/AlgoNotion_Extention.git
+[submodule "AlgoNotion_BE"]
+	path = AlgoNotion_BE
+	url = git@github.com:KimnPark-Dev/AlgoNotion_BE.git
+[submodule "TalkTime"]
+	path = TalkTime
+	url = https://github.com/KimnPark-Dev/TalkTime.git

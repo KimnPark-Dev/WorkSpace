@@ -1,0 +1,48 @@
+{
+  "id": "TalkTime",
+  "title": "TalkTime",
+  "status": "in-progress",
+  "due": null,
+  "repo": "https://github.com/KimnPark-Dev/TalkTime",
+  "paths": {
+    "FE": "./TalkTime/client",
+    "BE": "./TalkTime/server"
+  },
+  "members": ["ssong", "dohyun"],
+  "tags": ["react", "nodejs", "websocket", "gps", "realtime"],
+  "description": "GPS 기반 proximity 매칭 + 2D 메타버스 소셜 플랫폼. Phase 1 MVP 완성 (80%)",
+  "tasks": [
+    {
+      "id": "TalkTime-GPS",
+      "title": "실외 GPS 매칭 실사용 테스트",
+      "path": "./TalkTime",
+      "member": "ssong",
+      "priority": "high",
+      "estimate_h": 2
+    },
+    {
+      "id": "TalkTime-Docs",
+      "title": "README 설치 가이드 정리",
+      "path": "./TalkTime",
+      "member": "ssong",
+      "priority": "medium",
+      "estimate_h": 1
+    },
+    {
+      "id": "TalkTime-JWT",
+      "title": "Phase 2: JWT 인증 설계",
+      "path": "./TalkTime/server",
+      "member": "ssong",
+      "priority": "medium",
+      "estimate_h": 3
+    },
+    {
+      "id": "TalkTime-Infra",
+      "title": "Phase 2: Redis·PostgreSQL 인프라 설계",
+      "path": "./TalkTime/server",
+      "member": "dohyun",
+      "priority": "medium",
+      "estimate_h": 4
+    }
+  ]
+}
