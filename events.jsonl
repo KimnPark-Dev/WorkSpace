@@ -24,3 +24,16 @@
 {"ts":"2026-04-23T11:00:09+09:00","type":"task_carry_over","member":"ssong","task_id":"TalkTime-JWT"}
 {"ts":"2026-04-23T11:00:09+09:00","type":"task_carry_over","member":"ssong","task_id":"AlgoNotion-SWEA"}
 {"ts":"2026-04-23T11:00:09+09:00","type":"task_carry_over","member":"ssong","task_id":"AlgoNotion-Monetize"}
+{"ts":"2026-04-23T02:39:21+09:00","type":"task_start","member":"ssong","task_id":"Dashboard-UX","project":"local-dev-dashboard"}
+{"ts":"2026-04-23T02:39:21+09:00","type":"task_start","member":"ssong","task_id":"Dashboard-MemberTasks","project":"local-dev-dashboard"}
+{"ts":"2026-04-23T02:39:21+09:00","type":"task_start","member":"ssong","task_id":"Dashboard-MemberChart","project":"local-dev-dashboard"}
+{"ts":"2026-04-23T02:39:21+09:00","type":"task_start","member":"ssong","task_id":"Dashboard-Archive","project":"local-dev-dashboard"}
+{"ts":"2026-04-23T02:43:10+09:00","type":"task_done","member":"ssong","task_id":"Dashboard-UX"}
+{"ts":"2026-04-23T02:43:10+09:00","type":"task_done","member":"ssong","task_id":"Dashboard-MemberTasks"}
+{"ts":"2026-04-23T02:43:10+09:00","type":"task_done","member":"ssong","task_id":"Dashboard-MemberChart"}
+{"ts":"2026-04-23T02:43:10+09:00","type":"task_done","member":"ssong","task_id":"Dashboard-Archive"}
+{"ts":"2026-04-23T02:43:10+09:00","type":"task_carry_over","member":"ssong","task_id":"TalkTime-GPS"}
+{"ts":"2026-04-23T02:43:10+09:00","type":"task_carry_over","member":"ssong","task_id":"TalkTime-Docs"}
+{"ts":"2026-04-23T02:43:10+09:00","type":"task_carry_over","member":"ssong","task_id":"TalkTime-JWT"}
+{"ts":"2026-04-23T02:43:10+09:00","type":"task_carry_over","member":"ssong","task_id":"AlgoNotion-SWEA"}
+{"ts":"2026-04-23T02:43:10+09:00","type":"task_carry_over","member":"ssong","task_id":"AlgoNotion-Monetize"}
