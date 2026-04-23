@@ -54,6 +54,15 @@
       "background": "WorkSpace 레포 변경 시 트리거 → Next.js SSG 빌드 → GitHub Pages 배포"
     },
     {
+      "id": "Dashboard-UX",
+      "title": "대시보드 전체 레이아웃 가독성 개선",
+      "path": "./local-dev-dashboard",
+      "member": "ssong",
+      "priority": "medium",
+      "estimate_h": 2,
+      "background": "현재 SummaryCards·ProjectTable·ActivityTimeline이 세로로 나열되어 정보가 너무 많아 보임. 탭 or 접기(accordion) or 2단 레이아웃으로 섹션 분리, 컴포넌트 간 위계 정리"
+    },
+    {
       "id": "Dashboard-MemberTasks",
       "title": "멤버별 할 일 컴포넌트 추가",
       "path": "./local-dev-dashboard",
