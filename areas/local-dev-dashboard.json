@@ -1,13 +1,13 @@
 {
   "id": "local-dev-dashboard",
   "title": "Local Dev Activity Dashboard",
-  "status": "in-progress",
-  "due": "2026-05-11",
+  "status": "active",
+  "due": null,
   "repo": null,
   "paths": {},
   "members": ["ssong"],
   "tags": ["nextjs", "react", "tailwind", "recharts"],
-  "description": "JSON/JSONL 파일 기반 정적 팀 활동 대시보드. GitHub Actions로 주기적 갱신.",
+  "description": "JSON/JSONL 파일 기반 정적 팀 활동 대시보드. Vercel 배포. 유지 관리 중.",
   "tasks": [
     {
       "id": "Dashboard-Init",

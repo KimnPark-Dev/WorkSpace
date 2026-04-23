@@ -6,7 +6,7 @@
 
 | 닉네임 | 이름 | 역할 | 담당 프로젝트 |
 |--------|------|------|-------------|
-| ssong | 인송 | FE/BE 개발 | AlgoNotion(FE+BE), TalkTime(FE+BE), AI-Hack-Camp, Dashboard |
+| ssong | 인송 | FE/BE 개발 | AlgoNotion(FE+BE), TalkTime(FE+BE), AI-Hack-Camp |
 | dohyun | 도현 | 인프라/DevOps | AlgoNotion(인프라), TalkTime(인프라) |
 | taeho | 태호 | 기능 조사/확장 | AlgoNotion(Velog·플랫폼 확장) |
 
@@ -17,7 +17,12 @@
 | AlgoNotion | in-progress | 2026-04-30 | AlgoNotion_FE / AlgoNotion_BE |
 | TalkTime | in-progress | — | TalkTime/ |
 | AI-Hack-Camp-2026 | archived | 2026-04-24 | 없음 |
-| local-dev-dashboard | todo | 2026-05-11 | 없음 |
+
+## 관리 중인 영역 (Areas)
+
+| 영역 | 설명 |
+|------|------|
+| local-dev-dashboard | 팀 활동 대시보드 유지 관리 (Vercel 배포) |
 
 ## 디렉토리 구조
 
@@ -30,10 +35,9 @@ WorkSpace/
 ├── config.local.json       ← 개인 설정 (gitignore)
 ├── projects/               ← 진행 중인 프로젝트 (프로젝트별 JSON)
 │   ├── AlgoNotion.json
-│   ├── TalkTime.json
-│   ├── AI-Hack-Camp-2026.json
-│   └── local-dev-dashboard.json
+│   └── TalkTime.json
 ├── areas/                  ← 지속적 책임 영역 (기한 없는 관리 항목)
+│   └── local-dev-dashboard.json
 ├── archive/                ← 완료·중단된 프로젝트
 ├── logs/
 │   └── log-{member}.jsonl  ← 멤버별 작업 로그
