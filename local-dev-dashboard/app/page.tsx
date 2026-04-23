@@ -1,7 +1,5 @@
 import { loadProjects, loadLogs, loadEvents, loadDoneTaskIds } from "@/lib/loadData";
-import SummaryCards from "@/components/SummaryCards";
-import ProjectTable from "@/components/ProjectTable";
-import ActivityTimeline from "@/components/ActivityTimeline";
+import DashboardTabs from "@/components/DashboardTabs";
 
 export default function DashboardPage() {
   const projects = loadProjects();
@@ -16,10 +14,13 @@ export default function DashboardPage() {
         <p className="text-sm text-gray-400">ssong · dohyun · taeho</p>
       </header>
 
-      <main className="max-w-5xl mx-auto px-6 py-6 space-y-6">
-        <SummaryCards projects={projects} events={events} doneTaskIds={doneTaskIds} />
-        <ProjectTable projects={projects} doneTaskIds={doneTaskIds} />
-        <ActivityTimeline events={events} logs={logs} />
+      <main className="max-w-5xl mx-auto px-6 py-6">
+        <DashboardTabs
+          projects={projects}
+          events={events}
+          logs={logs}
+          doneTaskIds={doneTaskIds}
+        />
       </main>
     </div>
   );

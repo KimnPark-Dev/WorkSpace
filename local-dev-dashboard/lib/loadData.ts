@@ -49,8 +49,7 @@ export interface EventEntry {
   project?: string;
 }
 
-export function loadProjects(): Project[] {
-  const dir = path.join(ROOT, "projects");
+function readJsonDir(dir: string): Project[] {
   if (!fs.existsSync(dir)) return [];
   return fs
     .readdirSync(dir)
@@ -63,6 +62,13 @@ export function loadProjects(): Project[] {
         return [];
       }
     });
+}
+
+export function loadProjects(): Project[] {
+  return [
+    ...readJsonDir(path.join(ROOT, "projects")),
+    ...readJsonDir(path.join(ROOT, "archive")),
+  ];
 }
 
 export function loadLogs(): LogEntry[] {
