@@ -14,3 +14,13 @@
 {"ts":"2026-04-23T10:34:13+09:00","type":"task_start","member":"ssong","task_id":"Dashboard-Components","project":"local-dev-dashboard"}
 {"ts":"2026-04-23T10:34:13+09:00","type":"task_start","member":"ssong","task_id":"Dashboard-Timeline","project":"local-dev-dashboard"}
 {"ts":"2026-04-23T10:34:13+09:00","type":"task_start","member":"ssong","task_id":"Dashboard-Deploy","project":"local-dev-dashboard"}
+{"ts":"2026-04-23T11:00:09+09:00","type":"task_done","member":"ssong","task_id":"Dashboard-Init"}
+{"ts":"2026-04-23T11:00:09+09:00","type":"task_done","member":"ssong","task_id":"Dashboard-Parser"}
+{"ts":"2026-04-23T11:00:09+09:00","type":"task_done","member":"ssong","task_id":"Dashboard-Components"}
+{"ts":"2026-04-23T11:00:09+09:00","type":"task_done","member":"ssong","task_id":"Dashboard-Timeline"}
+{"ts":"2026-04-23T11:00:09+09:00","type":"task_done","member":"ssong","task_id":"Dashboard-Deploy"}
+{"ts":"2026-04-23T11:00:09+09:00","type":"task_carry_over","member":"ssong","task_id":"TalkTime-GPS"}
+{"ts":"2026-04-23T11:00:09+09:00","type":"task_carry_over","member":"ssong","task_id":"TalkTime-Docs"}
+{"ts":"2026-04-23T11:00:09+09:00","type":"task_carry_over","member":"ssong","task_id":"TalkTime-JWT"}
+{"ts":"2026-04-23T11:00:09+09:00","type":"task_carry_over","member":"ssong","task_id":"AlgoNotion-SWEA"}
+{"ts":"2026-04-23T11:00:09+09:00","type":"task_carry_over","member":"ssong","task_id":"AlgoNotion-Monetize"}
