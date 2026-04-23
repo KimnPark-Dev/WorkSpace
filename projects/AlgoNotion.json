@@ -18,7 +18,8 @@
       "path": "./AlgoNotion_FE",
       "member": "ssong",
       "priority": "high",
-      "estimate_h": 1
+      "estimate_h": 1,
+      "status": "done"
     },
     {
       "id": "AlgoNotion-CORS",
@@ -45,7 +46,8 @@
       "priority": "medium",
       "estimate_h": 1,
       "background": "Chrome content script 캐싱 문제 추정. DevTools → Sources → Content Scripts에서 직접 확인",
-      "skills": ["LLM_wiki/wiki/Chrome-content-script-캐싱-디버깅.md"]
+      "skills": ["LLM_wiki/wiki/Chrome-content-script-캐싱-디버깅.md"],
+      "status": "done"
     },
     {
       "id": "AlgoNotion-Monetize",
