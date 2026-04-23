@@ -2,3 +2,4 @@ config.local.json
 tasks/
 .session-log.jsonl
 */.session-log.jsonl
+.claude/settings.json
