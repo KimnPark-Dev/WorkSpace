@@ -7,14 +7,14 @@ const STATUS_LABELS: Record<string, string> = {
   "all": "전체",
   "todo": "예정",
   "in-progress": "진행 중",
-  "done": "완료",
+  "active": "유지관리",
   "archived": "아카이브",
 };
 
 const STATUS_COLORS: Record<string, string> = {
   "todo": "bg-gray-100 text-gray-600",
   "in-progress": "bg-blue-100 text-blue-700",
-  "done": "bg-green-100 text-green-700",
+  "active": "bg-purple-100 text-purple-700",
   "archived": "bg-yellow-100 text-yellow-700",
 };
 

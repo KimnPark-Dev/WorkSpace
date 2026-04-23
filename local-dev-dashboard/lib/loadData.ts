@@ -18,7 +18,7 @@ export interface Task {
 export interface Project {
   id: string;
   title: string;
-  status: "todo" | "in-progress" | "done" | "archived";
+  status: "todo" | "in-progress" | "done" | "active" | "archived";
   due: string | null;
   repo: string | null;
   members: string[];
@@ -67,6 +67,7 @@ function readJsonDir(dir: string): Project[] {
 export function loadProjects(): Project[] {
   return [
     ...readJsonDir(path.join(ROOT, "projects")),
+    ...readJsonDir(path.join(ROOT, "areas")),
     ...readJsonDir(path.join(ROOT, "archive")),
   ];
 }
