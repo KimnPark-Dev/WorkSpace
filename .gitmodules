@@ -9,4 +9,4 @@
 	url = git@github.com:KimnPark-Dev/AlgoNotion_BE.git
 [submodule "TalkTime"]
 	path = TalkTime
-	url = https://github.com/KimnPark-Dev/TalkTime.git
+	url = git@github.com:KimnPark-Dev/TalkTime.git

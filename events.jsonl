@@ -8,3 +8,9 @@
 {"ts":"2026-04-22T12:18:59+09:00","type":"task_carry_over","member":"ssong","task_id":"Dashboard-Init"}
 {"ts":"2026-04-22T12:18:59+09:00","type":"task_carry_over","member":"ssong","task_id":"Dashboard-Parser"}
 {"ts":"2026-04-22T12:18:59+09:00","type":"task_carry_over","member":"ssong","task_id":"AlgoNotion-Monetize"}
+{"ts":"2026-04-23T00:00:00+09:00","type":"day_start","member":"ssong"}
+{"ts":"2026-04-23T10:34:13+09:00","type":"task_start","member":"ssong","task_id":"Dashboard-Init","project":"local-dev-dashboard"}
+{"ts":"2026-04-23T10:34:13+09:00","type":"task_start","member":"ssong","task_id":"Dashboard-Parser","project":"local-dev-dashboard"}
+{"ts":"2026-04-23T10:34:13+09:00","type":"task_start","member":"ssong","task_id":"Dashboard-Components","project":"local-dev-dashboard"}
+{"ts":"2026-04-23T10:34:13+09:00","type":"task_start","member":"ssong","task_id":"Dashboard-Timeline","project":"local-dev-dashboard"}
+{"ts":"2026-04-23T10:34:13+09:00","type":"task_start","member":"ssong","task_id":"Dashboard-Deploy","project":"local-dev-dashboard"}

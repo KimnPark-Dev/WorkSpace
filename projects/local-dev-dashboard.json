@@ -6,25 +6,52 @@
   "repo": null,
   "paths": {},
   "members": ["ssong"],
-  "tags": ["python", "react", "fastapi", "sqlite"],
-  "description": "Obsidian md·shell history·git 로그 분석 로컬 대시보드. 레포 미생성",
+  "tags": ["nextjs", "react", "tailwind", "recharts"],
+  "description": "JSON/JSONL 파일 기반 정적 팀 활동 대시보드. GitHub Actions로 주기적 갱신.",
   "tasks": [
     {
       "id": "Dashboard-Init",
-      "title": "GitHub 레포 생성 + 초기 구조 세팅",
-      "path": ".",
+      "title": "WorkSpace 내 local-dev-dashboard/ 디렉토리 세팅 (별도 레포 없음)",
+      "path": "./local-dev-dashboard",
       "member": "ssong",
       "priority": "medium",
       "estimate_h": 1
     },
     {
       "id": "Dashboard-Parser",
-      "title": "Obsidian md 스캐너 + 링크 파서 구현",
-      "path": ".",
+      "title": "parseJsonl.ts + loadData.ts 유틸 구현",
+      "path": "./local-dev-dashboard",
+      "member": "ssong",
+      "priority": "high",
+      "estimate_h": 1,
+      "background": "빌드 타임 fs로 projects/*.json, logs/*.jsonl, events.jsonl 읽기. 빈 줄·파싱 에러 예외 처리 필수"
+    },
+    {
+      "id": "Dashboard-Components",
+      "title": "SummaryCards + ProjectTable 컴포넌트 구현",
+      "path": "./local-dev-dashboard",
+      "member": "ssong",
+      "priority": "high",
+      "estimate_h": 2,
+      "background": "SummaryCards: 전체 프로젝트 수·완료 태스크·최근 이벤트. ProjectTable: 상태별 필터링 포함"
+    },
+    {
+      "id": "Dashboard-Timeline",
+      "title": "ActivityTimeline 컴포넌트 구현 (Recharts)",
+      "path": "./local-dev-dashboard",
       "member": "ssong",
       "priority": "medium",
-      "estimate_h": 4,
-      "background": "[[링크|별칭]], ![[임베드]], [[#^블록참조]] 다양한 형식 대응 필요"
+      "estimate_h": 2,
+      "background": "logs/*.jsonl + events.jsonl 합쳐서 시간순 타임라인. Recharts 사용"
+    },
+    {
+      "id": "Dashboard-Deploy",
+      "title": "GitHub Actions 배포 파이프라인 구성",
+      "path": "./local-dev-dashboard",
+      "member": "ssong",
+      "priority": "medium",
+      "estimate_h": 1,
+      "background": "WorkSpace 레포 변경 시 트리거 → Next.js SSG 빌드 → GitHub Pages 배포"
     }
   ]
 }
