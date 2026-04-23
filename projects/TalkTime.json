@@ -9,30 +9,70 @@
     "BE": "./TalkTime/server"
   },
   "members": ["ssong", "dohyun"],
-  "tags": ["react", "nodejs", "websocket", "gps", "realtime"],
+  "tags": ["react", "nodejs", "go", "websocket", "gps", "realtime"],
   "description": "GPS 기반 proximity 매칭 + 2D 메타버스 소셜 플랫폼. Phase 1 MVP 완성 (80%)",
   "tasks": [
     {
+      "id": "TalkTime-FE-Split",
+      "title": "FE 레포 물리적 분리 (TalkTime_FE 독립화)",
+      "path": "./TalkTime/client",
+      "member": "ssong",
+      "priority": "high",
+      "estimate_h": 1
+    },
+    {
       "id": "TalkTime-GPS",
       "title": "실외 GPS 매칭 실사용 테스트",
-      "path": "./TalkTime",
+      "path": "./TalkTime/client",
       "member": "ssong",
       "priority": "high",
       "estimate_h": 2
     },
     {
-      "id": "TalkTime-Docs",
-      "title": "README 설치 가이드 정리",
-      "path": "./TalkTime",
+      "id": "TalkTime-FE-Proximity",
+      "title": "proximity UX 개선 (cyan 마크 · 방향 화살표 · HUD)",
+      "path": "./TalkTime/client",
       "member": "ssong",
       "priority": "medium",
+      "estimate_h": 2
+    },
+    {
+      "id": "TalkTime-FE-Animation",
+      "title": "커피/담배 소모 SVG 애니메이션 구현",
+      "path": "./TalkTime/client",
+      "member": "ssong",
+      "priority": "medium",
+      "estimate_h": 2
+    },
+    {
+      "id": "TalkTime-Docs",
+      "title": "README 설치 가이드 정리 (FE/BE 분리 반영)",
+      "path": "./TalkTime",
+      "member": "ssong",
+      "priority": "low",
       "estimate_h": 1
+    },
+    {
+      "id": "TalkTime-BE-Split",
+      "title": "BE 레포 물리적 분리 (TalkTime_BE 독립화)",
+      "path": "./TalkTime/server",
+      "member": "dohyun",
+      "priority": "high",
+      "estimate_h": 1
+    },
+    {
+      "id": "TalkTime-Go",
+      "title": "Phase 2: Go 언어 기반 WebSocket PoC 서버 구축",
+      "path": "./TalkTime/server",
+      "member": "dohyun",
+      "priority": "high",
+      "estimate_h": 3
     },
     {
       "id": "TalkTime-JWT",
       "title": "Phase 2: JWT 인증 설계",
       "path": "./TalkTime/server",
-      "member": "ssong",
+      "member": "dohyun",
       "priority": "medium",
       "estimate_h": 3
     },
