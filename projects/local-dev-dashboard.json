@@ -52,6 +52,15 @@
       "priority": "medium",
       "estimate_h": 1,
       "background": "WorkSpace 레포 변경 시 트리거 → Next.js SSG 빌드 → GitHub Pages 배포"
+    },
+    {
+      "id": "Dashboard-Archive",
+      "title": "archive/ 폴더 프로젝트도 대시보드에 표시",
+      "path": "./local-dev-dashboard",
+      "member": "ssong",
+      "priority": "low",
+      "estimate_h": 1,
+      "background": "loadProjects()가 projects/만 읽어서 완료·아카이브 필터에 아무것도 안 나옴. archive/*.json도 함께 로드하도록 수정 필요"
     }
   ]
 }
