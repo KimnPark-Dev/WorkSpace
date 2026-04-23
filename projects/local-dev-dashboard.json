@@ -54,6 +54,15 @@
       "background": "WorkSpace 레포 변경 시 트리거 → Next.js SSG 빌드 → GitHub Pages 배포"
     },
     {
+      "id": "Dashboard-MemberTasks",
+      "title": "멤버별 할 일 컴포넌트 추가",
+      "path": "./local-dev-dashboard",
+      "member": "ssong",
+      "priority": "low",
+      "estimate_h": 1,
+      "background": "현재 ProjectTable은 프로젝트 단위. 멤버(ssong·dohyun·taeho) 기준으로 미완료 태스크를 그룹핑해서 보여주는 MemberTaskList 컴포넌트 추가"
+    },
+    {
       "id": "Dashboard-MemberChart",
       "title": "활동 차트 멤버별 색상 스택 바로 변경",
       "path": "./local-dev-dashboard",
