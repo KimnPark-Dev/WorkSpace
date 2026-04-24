@@ -205,6 +205,15 @@ def parse_task_id_from_markdown(path: Path, numeric_id: str) -> str:
     return match.group(1).strip()
 
 
+def extract_task_section_from_markdown(path: Path, task_id: str) -> str:
+    text = path.read_text(encoding="utf-8")
+    pattern = re.compile(
+        rf"(?ms)^### \d+\. {re.escape(task_id)}:.*?(?=^### \d+\. |\Z)"
+    )
+    match = pattern.search(text)
+    return match.group(0).strip() if match else ""
+
+
 def resolve_task(task_ref: str) -> tuple[str, str, TaskRecord]:
     member = load_member()
     md_path = task_markdown_path(member)
@@ -300,6 +309,8 @@ def start_task(task_ref: str) -> dict[str, Any]:
         "project": record.project,
     }
     session_path = write_session_log(record, task_id, session_payload)
+    md_path = task_markdown_path(member)
+    task_section = extract_task_section_from_markdown(md_path, task_id) if md_path.exists() else ""
 
     return {
         "member": member,
@@ -308,6 +319,11 @@ def start_task(task_ref: str) -> dict[str, Any]:
         "title": record.task.get("title"),
         "path": str(record.task.get("path", ".")),
         "session_log": str(session_path.relative_to(ROOT)),
+        "task_section": task_section,
+        "background": record.task.get("background"),
+        "skills": record.task.get("skills", []),
+        "estimate_h": record.task.get("estimate_h"),
+        "next_action": f"{record.task.get('path', '.')} 경로에서 관련 설정/코드를 확인하고 이 태스크를 바로 진행하세요.",
     }
 
 

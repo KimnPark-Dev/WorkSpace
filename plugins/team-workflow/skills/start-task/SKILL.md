@@ -7,8 +7,10 @@ description: Start a workspace task using the existing WorkSpace JSON and markdo
 
 1. Accept a task id like `AlgoNotion-CORS` or a numeric index from today's markdown task file.
 2. Run `scripts/start_task.py --task <value>`.
-3. If the task resolves successfully, show the task summary and the session log location.
-4. If resolution fails, surface the exact validation error.
+3. If the task resolves successfully, show the task summary, the session log location, and the extracted markdown task section.
+4. After the task is started successfully, do not stop at status reporting. Immediately inspect the task path, gather code context, and continue performing the task unless a real blocker prevents progress.
+5. While working, send short progress updates that make it clear the task is actively in progress.
+6. If resolution fails, surface the exact validation error.
 
 ## Script
 
