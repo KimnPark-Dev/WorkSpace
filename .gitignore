@@ -2,4 +2,7 @@ config.local.json
 tasks/
 .session-log.jsonl
 */.session-log.jsonl
+.workflow-sessions/
+.workflow-analysis/
+__pycache__/
 .claude/settings.json

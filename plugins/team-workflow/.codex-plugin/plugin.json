@@ -1,0 +1,10 @@
+{
+  "name": "team-workflow",
+  "version": "0.1.0",
+  "description": "Workspace-local team workflow plugin that mirrors the existing Claude-style task commands with Codex skills and scripts.",
+  "interface": {
+    "displayName": "Team Workflow",
+    "shortDescription": "Task extraction and logging skills for this workspace",
+    "defaultPrompt": "Use this plugin when working inside the WorkSpace repo and you need today's tasks, task start logging, or task completion logging."
+  }
+}

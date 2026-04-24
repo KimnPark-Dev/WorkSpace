@@ -1,0 +1,20 @@
+{
+  "name": "workspace-local",
+  "interface": {
+    "displayName": "Workspace Local Plugins"
+  },
+  "plugins": [
+    {
+      "name": "team-workflow",
+      "source": {
+        "source": "local",
+        "path": "./plugins/team-workflow"
+      },
+      "policy": {
+        "installation": "AVAILABLE",
+        "authentication": "ON_INSTALL"
+      },
+      "category": "Productivity"
+    }
+  ]
+}

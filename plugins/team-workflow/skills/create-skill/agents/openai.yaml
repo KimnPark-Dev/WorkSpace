@@ -1,0 +1,3 @@
+display_name: 스킬생성
+short_description: /스킬생성 요청을 새 Codex 스킬 생성으로 연결한다
+default_prompt: Use this skill when the user types /스킬생성 {이름} in this WorkSpace repo.

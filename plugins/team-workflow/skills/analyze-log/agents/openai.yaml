@@ -1,0 +1,3 @@
+display_name: 분석
+short_description: /분석 요청을 로그 리포트 생성과 스킬 후보 추출로 연결한다
+default_prompt: Use this skill when the user types /분석 or asks to analyze logs in this WorkSpace repo.

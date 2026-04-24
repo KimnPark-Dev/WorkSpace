@@ -1,0 +1,3 @@
+display_name: 정리
+short_description: /정리 요청을 프로젝트 JSON 동기화와 README 업데이트로 연결한다
+default_prompt: Use this skill when the user types /정리 or /정리 {project_id} in this WorkSpace repo.

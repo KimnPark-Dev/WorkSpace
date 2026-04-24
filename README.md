@@ -80,3 +80,40 @@ LLM_wiki 디렉토리에서:
 | `/인제스트 {파일/URL}` | 새 문서를 위키에 통합 |
 | `/쿼리 {질문}` | 위키에서 지식 검색 |
 | `/린트` | 위키 건강 상태 점검 |
+
+## Codex 플러그인
+
+이 레포에는 Codex용 로컬 플러그인 뼈대도 포함되어 있다.
+
+- 플러그인: `plugins/team-workflow/`
+- 마켓플레이스 엔트리: `.agents/plugins/marketplace.json`
+- 스킬:
+  - `today-tasks`
+  - `start-task`
+  - `finish-task`
+  - `slash-router`
+  - `analyze-log`
+  - `create-skill`
+  - `clone-all`
+  - `pull-all`
+  - `organize-workspace`
+
+스크립트 직접 실행 예시:
+
+```bash
+python plugins/team-workflow/scripts/today_tasks.py
+python plugins/team-workflow/scripts/start_task.py --task 1
+python plugins/team-workflow/scripts/finish_task.py --task AlgoNotion-CORS
+python plugins/team-workflow/scripts/analyze_logs.py
+python plugins/team-workflow/scripts/create_skill.py --name "cors-fix"
+python plugins/team-workflow/scripts/clone_all.py
+python plugins/team-workflow/scripts/pull_all.py
+python plugins/team-workflow/scripts/organize_workspace.py --project-id AlgoNotion
+python plugins/team-workflow/scripts/dispatch_command.py --raw "/오늘할일"
+```
+
+의도는 Claude Code의 `/.claude/commands/`와 같은 협업 흐름을 Codex에서는 `plugin + skills + scripts` 구조로 옮기는 것이다.
+
+채팅에서 `/오늘할일`, `/작업시작 1`, `/작업완료 AlgoNotion-CORS`, `/분석`, `/스킬생성 cors-fix`, `/전체클론`, `/전체풀`, `/정리 AlgoNotion`처럼 입력하면, Codex는 네이티브 슬래시 커맨드가 아니라 이 플러그인의 `slash-router` 경로로 해석해 최대한 같은 동작을 수행하도록 설계한다.
+
+런타임 산출물 중 세션 로그와 분석 리포트는 권한 이슈를 피하기 위해 `.workflow-sessions/`, `.workflow-analysis/` 아래에 기록한다.
