@@ -43,3 +43,5 @@
 {"ts": "2026-04-24T14:47:07+09:00", "type": "task_start", "member": "dohyun", "task_id": "AlgoNotion-CORS", "project": "AlgoNotion"}
 {"ts": "2026-04-24T14:48:44+09:00", "type": "task_done", "member": "dohyun", "task_id": "AlgoNotion-CORS"}
 {"ts": "2026-04-24T14:48:44+09:00", "type": "task_carry_over", "member": "dohyun", "task_id": "TalkTime-Infra"}
+{"ts": "2026-04-24T15:19:44+09:00", "type": "task_start", "member": "dohyun", "task_id": "TalkTime-Infra", "project": "TalkTime"}
+{"ts": "2026-04-24T15:21:12+09:00", "type": "task_done", "member": "dohyun", "task_id": "TalkTime-Infra"}
