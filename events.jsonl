@@ -38,3 +38,8 @@
 {"ts":"2026-04-23T02:43:10+09:00","type":"task_carry_over","member":"ssong","task_id":"AlgoNotion-SWEA"}
 {"ts":"2026-04-23T02:43:10+09:00","type":"task_carry_over","member":"ssong","task_id":"AlgoNotion-Monetize"}
 {"ts":"2026-04-23T13:30:00+09:00","type":"day_start","member":"dohyun"}
+{"ts": "2026-04-24T14:39:54+09:00", "type": "task_start", "member": "dohyun", "task_id": "AlgoNotion-CORS", "project": "AlgoNotion"}
+{"ts": "2026-04-24T14:45:14+09:00", "type": "task_start", "member": "dohyun", "task_id": "AlgoNotion-CORS", "project": "AlgoNotion"}
+{"ts": "2026-04-24T14:47:07+09:00", "type": "task_start", "member": "dohyun", "task_id": "AlgoNotion-CORS", "project": "AlgoNotion"}
+{"ts": "2026-04-24T14:48:44+09:00", "type": "task_done", "member": "dohyun", "task_id": "AlgoNotion-CORS"}
+{"ts": "2026-04-24T14:48:44+09:00", "type": "task_carry_over", "member": "dohyun", "task_id": "TalkTime-Infra"}
