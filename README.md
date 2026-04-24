@@ -117,3 +117,5 @@ python plugins/team-workflow/scripts/dispatch_command.py --raw "/오늘할일"
 채팅에서 `/오늘할일`, `/작업시작 1`, `/작업완료 AlgoNotion-CORS`, `/분석`, `/스킬생성 cors-fix`, `/전체클론`, `/전체풀`, `/정리 AlgoNotion`처럼 입력하면, Codex는 네이티브 슬래시 커맨드가 아니라 이 플러그인의 `slash-router` 경로로 해석해 최대한 같은 동작을 수행하도록 설계한다.
 
 런타임 산출물 중 세션 로그와 분석 리포트는 권한 이슈를 피하기 위해 `.workflow-sessions/`, `.workflow-analysis/` 아래에 기록한다.
+
+`/스킬생성`은 Claude 쪽 흐름과 맞추기 위해 루트 `skills/{name}.md`를 만들고 git 브랜치/커밋/푸시까지 시도한다.

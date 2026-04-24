@@ -182,8 +182,10 @@ def format_today_tasks(member: str, records: list[TaskRecord]) -> str:
 
 def ensure_today_tasks_file() -> tuple[Path, list[TaskRecord]]:
     member = load_member()
-    ensure_day_start(member)
     path = task_markdown_path(member)
+    if path.exists():
+        return path, tasks_for_member(member)
+    ensure_day_start(member)
     records = tasks_for_member(member)
     path.parent.mkdir(parents=True, exist_ok=True)
     path.write_text(format_today_tasks(member, records), encoding="utf-8")
@@ -221,6 +223,66 @@ def session_log_path(task_id: str) -> Path:
     return ROOT / ".workflow-sessions" / f"{task_id}.jsonl"
 
 
+def preferred_session_log_path(record: TaskRecord) -> Path:
+    return ROOT / str(record.task.get("path", ".")) / ".session-log.jsonl"
+
+
+def resolved_session_log_path(task_id: str, record: TaskRecord) -> Path:
+    preferred = preferred_session_log_path(record)
+    fallback = session_log_path(task_id)
+    if preferred.exists():
+        return preferred
+    if fallback.exists():
+        return fallback
+    return preferred
+
+
+def write_session_log(record: TaskRecord, task_id: str, payload: dict[str, Any]) -> Path:
+    preferred = preferred_session_log_path(record)
+    try:
+        preferred.parent.mkdir(parents=True, exist_ok=True)
+        preferred.write_text(json.dumps(payload, ensure_ascii=False) + "\n", encoding="utf-8")
+        return preferred
+    except OSError:
+        fallback = session_log_path(task_id)
+        fallback.parent.mkdir(parents=True, exist_ok=True)
+        fallback.write_text(json.dumps(payload, ensure_ascii=False) + "\n", encoding="utf-8")
+        return fallback
+
+
+def safe_unlink(path: Path) -> None:
+    try:
+        if path.exists():
+            path.unlink()
+    except OSError:
+        pass
+
+
+def format_commit_message(message: str) -> list[str]:
+    return ["git", "commit", "-m", message]
+
+
+def stage_commit_push(paths: list[str], commit_message: str) -> dict[str, Any]:
+    add_result = run_command(["git", "add", *paths])
+    if not add_result["ok"]:
+        return {"add": add_result, "commit": None, "push": None}
+
+    status_before = run_command(["git", "diff", "--cached", "--name-only"])
+    if not status_before["ok"] or not status_before["stdout"].strip():
+        return {
+            "add": add_result,
+            "commit": {"ok": True, "stdout": "No staged changes", "stderr": "", "code": 0},
+            "push": None,
+        }
+
+    commit_result = run_command(format_commit_message(commit_message))
+    if not commit_result["ok"]:
+        return {"add": add_result, "commit": commit_result, "push": None}
+
+    push_result = run_command(["git", "push"])
+    return {"add": add_result, "commit": commit_result, "push": push_result}
+
+
 def start_task(task_ref: str) -> dict[str, Any]:
     member, task_id, record = resolve_task(task_ref)
     append_jsonl(
@@ -237,7 +299,7 @@ def start_task(task_ref: str) -> dict[str, Any]:
         "member": member,
         "project": record.project,
     }
-    session_path.write_text(json.dumps(session_payload, ensure_ascii=False) + "\n", encoding="utf-8")
+    session_path = write_session_log(record, task_id, session_payload)
 
     return {
         "member": member,
@@ -251,7 +313,7 @@ def start_task(task_ref: str) -> dict[str, Any]:
 
 def finish_task(task_ref: str) -> dict[str, Any]:
     member, task_id, record = resolve_task(task_ref)
-    session_path = session_log_path(task_id)
+    session_path = resolved_session_log_path(task_id, record)
     if not session_path.exists():
         raise WorkflowError("세션 로그가 없습니다. /작업시작을 먼저 실행했는지 확인해주세요.")
 
@@ -304,7 +366,8 @@ def finish_task(task_ref: str) -> dict[str, Any]:
     }
     append_jsonl(ROOT / "logs" / f"log-{member}.jsonl", log_payload)
     append_jsonl(ROOT / "events.jsonl", {"ts": now_iso(), "type": "task_done", "member": member, "task_id": task_id})
-    session_path.unlink()
+    safe_unlink(session_path)
+    safe_unlink(session_log_path(task_id))
 
     member_logs = [
         row
@@ -330,6 +393,11 @@ def finish_task(task_ref: str) -> dict[str, Any]:
             {"ts": now_iso(), "type": "task_carry_over", "member": member, "task_id": pending_id},
         )
 
+    git_result = stage_commit_push(
+        [f"logs/log-{member}.jsonl", "events.jsonl"],
+        f"log: {member} {today_string()} (완료 {len(summary_tasks)}건, 이월 {len(carry_over)}건)",
+    )
+
     return {
         "member": member,
         "task_id": task_id,
@@ -345,7 +413,20 @@ def finish_task(task_ref: str) -> dict[str, Any]:
             "total_files_touched": sum(len(row.get("files_touched", [])) for row in member_logs),
             "carry_over": carry_over,
         },
+        "git": git_result,
     }
+
+
+def write_report_file(preferred: Path, content: str) -> Path:
+    try:
+        preferred.parent.mkdir(parents=True, exist_ok=True)
+        preferred.write_text(content, encoding="utf-8")
+        return preferred
+    except OSError:
+        fallback = ROOT / ".workflow-analysis" / preferred.name
+        fallback.parent.mkdir(parents=True, exist_ok=True)
+        fallback.write_text(content, encoding="utf-8")
+        return fallback
 
 
 def analyze_logs() -> dict[str, Any]:
@@ -408,8 +489,7 @@ def analyze_logs() -> dict[str, Any]:
                 }
             )
 
-    report_path = ROOT / ".workflow-analysis" / f"{today_string()}-report.md"
-    report_path.parent.mkdir(parents=True, exist_ok=True)
+    preferred_report_path = ROOT / "analysis" / f"{today_string()}-report.md"
     repeated_section = ["## 반복 패턴", ""]
     if repeated_errors:
         for msg, counts in sorted(repeated_errors.items()):
@@ -451,7 +531,7 @@ def analyze_logs() -> dict[str, Any]:
         + candidate_section
         + stats_section
     ) + "\n"
-    report_path.write_text(content, encoding="utf-8")
+    report_path = write_report_file(preferred_report_path, content)
 
     return {
         "path": str(report_path.relative_to(ROOT)),
@@ -468,7 +548,6 @@ def slugify_skill_name(text: str) -> str:
 
 def latest_analysis_report() -> Path:
     paths = sorted((ROOT / "analysis").glob("*-report.md"))
-    paths.extend(sorted((ROOT / "analysis" / "generated").glob("*-report.md")))
     paths.extend(sorted((ROOT / ".workflow-analysis").glob("*-report.md")))
     if not paths:
         raise WorkflowError("analysis/ 디렉토리에 리포트가 없습니다. 먼저 /분석 을 실행해주세요.")
@@ -483,20 +562,21 @@ def create_skill(skill_name: str) -> dict[str, Any]:
     report = report_path.read_text(encoding="utf-8")
     related_lines = [line for line in report.splitlines() if skill_name.lower() in line.lower()]
     related_text = "\n".join(related_lines) if related_lines else "분석 리포트에서 직접 일치하는 패턴을 찾지 못했습니다."
-    task_ids = sorted({row.get("task_id") for row in read_jsonl(ROOT / "logs" / f"log-{load_member()}.jsonl") if row.get("task_id")})
+    task_ids = sorted(
+        {
+            str(row.get("task_id"))
+            for path in sorted((ROOT / "logs").glob("log-*.jsonl"))
+            for row in read_jsonl(path)
+            if row.get("task_id")
+        }
+    )
 
     normalized = slugify_skill_name(skill_name)
-    skill_dir = ROOT / "plugins" / "team-workflow" / "skills" / normalized
-    agents_dir = skill_dir / "agents"
-    skill_dir.mkdir(parents=True, exist_ok=True)
-    agents_dir.mkdir(parents=True, exist_ok=True)
+    skills_dir = ROOT / "skills"
+    skills_dir.mkdir(parents=True, exist_ok=True)
+    skill_path = skills_dir / f"{normalized}.md"
 
-    skill_md = f"""---
-name: {normalized}
-description: Generated workspace skill derived from analysis patterns. Use when the user asks for {skill_name}, related repeated errors, or wants a documented fix pattern captured from this WorkSpace repository.
----
-
-# {skill_name}
+    skill_md = f"""# {skill_name}
 
 ## 증상
 {related_text}
@@ -520,23 +600,22 @@ TODO: 여기에 관련 코드 예시를 추가하세요.
 재발 방지 체크리스트와 사전 검증 항목을 정리하세요.
 
 ## 관련 태스크
-{", ".join(str(item) for item in task_ids) if task_ids else "관련 태스크 없음"}
+{", ".join(task_ids) if task_ids else "관련 태스크 없음"}
 
 ## 작성일
 {today_string()}
 """
-    openai_yaml = (
-        f"display_name: {skill_name}\n"
-        f"short_description: 분석 리포트를 바탕으로 생성된 {skill_name} 스킬\n"
-        f"default_prompt: Use this skill when the user asks for {skill_name} or the related repeated error pattern in this WorkSpace repo.\n"
-    )
-    (skill_dir / "SKILL.md").write_text(skill_md, encoding="utf-8")
-    (agents_dir / "openai.yaml").write_text(openai_yaml, encoding="utf-8")
+    skill_path.write_text(skill_md, encoding="utf-8")
+    branch_result = run_command(["git", "checkout", "-b", f"skill/{normalized}"])
+    git_result = stage_commit_push([str(skill_path.relative_to(ROOT))], f"skill: {normalized} 추가")
     return {
         "skill_name": skill_name,
         "normalized": normalized,
-        "path": str((skill_dir / "SKILL.md").relative_to(ROOT)),
+        "path": str(skill_path.relative_to(ROOT)),
         "report": str(report_path.relative_to(ROOT)),
+        "branch": f"skill/{normalized}",
+        "git_branch": branch_result,
+        "git": git_result,
     }
 
 
@@ -645,6 +724,8 @@ def organize(project_id: str | None = None) -> dict[str, Any]:
     member = load_member()
     done_ids = {str(row.get("task_id")) for row in read_jsonl(ROOT / "events.jsonl") if row.get("type") == "task_done"}
     targets = []
+    changed_project_paths: list[str] = []
+    changed_readmes: list[str] = []
     for path in sorted((ROOT / "projects").glob("*.json")):
         doc = read_json(path)
         if project_id and doc.get("id") != project_id:
@@ -654,11 +735,19 @@ def organize(project_id: str | None = None) -> dict[str, Any]:
             if task.get("id") in done_ids and task.get("status") != "done":
                 task["status"] = "done"
                 changed.append(task.get("id"))
-        write_json(path, doc)
+        original_doc = json.dumps(read_json(path), ensure_ascii=False, sort_keys=True)
+        updated_doc = json.dumps(doc, ensure_ascii=False, sort_keys=True)
+        if original_doc != updated_doc:
+            write_json(path, doc)
+            changed_project_paths.append(str(path.relative_to(ROOT)))
         incomplete = len([task for task in doc.get("tasks", []) if task.get("status") != "done"])
         readmes = []
         for readme_path in readme_paths_for_project(doc):
+            before = readme_path.read_text(encoding="utf-8") if readme_path.exists() else None
             update_readme_sections(readme_path, doc)
+            after = readme_path.read_text(encoding="utf-8")
+            if before != after:
+                changed_readmes.append(str(readme_path.relative_to(ROOT)))
             readmes.append(str(readme_path.relative_to(ROOT)))
         targets.append(
             {
@@ -671,7 +760,12 @@ def organize(project_id: str | None = None) -> dict[str, Any]:
         )
     if project_id and not targets:
         raise WorkflowError(f"projects/{project_id}.json 를 찾을 수 없습니다.")
-    return {"date": today_string(), "projects": targets}
+    staged_paths = sorted(set(changed_project_paths + changed_readmes))
+    git_result = stage_commit_push(
+        staged_paths,
+        f"chore: 정리 — {today_string()} ({', '.join(item['project_id'] for item in targets)})",
+    ) if staged_paths else {"add": None, "commit": None, "push": None}
+    return {"date": today_string(), "projects": targets, "git": git_result}
 
 
 def main() -> None:

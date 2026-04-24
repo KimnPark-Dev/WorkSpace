@@ -7,7 +7,7 @@ description: Generate a new Codex skill from the latest WorkSpace analysis repor
 
 1. Accept a skill name argument.
 2. Run `scripts/create_skill.py --name "<skill-name>"`.
-3. Show the generated skill path and report source.
+3. Show the generated markdown path under `skills/`, the report source, and the git branch or push result.
 4. If the latest analysis report is missing, ask the user to run `/분석` first.
 
 ## Script
