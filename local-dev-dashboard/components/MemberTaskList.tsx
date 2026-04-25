@@ -29,7 +29,7 @@ export default function MemberTaskList({ projects, doneTaskIds }: Props) {
 
   for (const p of projects) {
     for (const t of p.tasks) {
-      if (doneTaskIds.has(t.id)) continue;
+      if (doneTaskIds.has(t.id) || t.status === "done") continue;
       if (!byMember[t.member]) byMember[t.member] = [];
       byMember[t.member].push({ ...t, projectId: p.id, projectTitle: p.title });
     }

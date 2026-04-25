@@ -11,8 +11,11 @@ export interface Task {
   member: string;
   priority: "high" | "medium" | "low";
   estimate_h: number;
+  status?: string;
+  done_at?: string;
   background?: string;
   skills?: string[];
+  notes?: string;
 }
 
 export interface Project {
