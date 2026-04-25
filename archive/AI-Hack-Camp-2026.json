@@ -16,6 +16,8 @@
       "member": "ssong",
       "priority": "high",
       "estimate_h": 2,
+      "status": "done",
+      "done_at": "2026-04-25",
       "background": "마감 2026-04-24. 디지털 헬스/안전/포용/교육 중 분야 선택"
     },
     {
@@ -25,6 +27,8 @@
       "member": "ssong",
       "priority": "high",
       "estimate_h": 4,
+      "status": "done",
+      "done_at": "2026-04-25",
       "background": "제안배경·AI윤리·핵심아이디어·기술스택·아키텍처·개발계획·기대효과"
     }
   ]
