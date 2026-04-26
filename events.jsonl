@@ -45,3 +45,13 @@
 {"ts": "2026-04-24T14:48:44+09:00", "type": "task_carry_over", "member": "dohyun", "task_id": "TalkTime-Infra"}
 {"ts": "2026-04-24T15:19:44+09:00", "type": "task_start", "member": "dohyun", "task_id": "TalkTime-Infra", "project": "TalkTime"}
 {"ts": "2026-04-24T15:21:12+09:00", "type": "task_done", "member": "dohyun", "task_id": "TalkTime-Infra"}
+{"ts": "2026-04-25T13:47:06+09:00", "type": "day_start", "member": "dohyun"}
+{"ts":"2026-04-26T09:00:00+09:00","type":"day_start","member":"dohyun"}
+{"ts":"2026-04-26T09:05:00+09:00","type":"task_start","member":"dohyun","task_id":"TalkTime-BE-Split","project":"TalkTime"}
+{"ts": "2026-04-26T14:40:33+09:00", "type": "task_start", "member": "dohyun", "task_id": "TalkTime-BE-Split", "project": "TalkTime"}
+{"ts": "2026-04-26T14:43:52+09:00", "type": "task_start", "member": "dohyun", "task_id": "TalkTime-Go", "project": "TalkTime"}
+{"ts":"2026-04-26T14:55:58+09:00","type":"task_done","member":"dohyun","task_id":"TalkTime-BE-Split"}
+{"ts":"2026-04-26T14:55:58+09:00","type":"task_done","member":"dohyun","task_id":"TalkTime-Go"}
+{"ts":"2026-04-26T14:55:58+09:00","type":"task_carry_over","member":"dohyun","task_id":"AlgoNotion-CORS"}
+{"ts":"2026-04-26T14:55:58+09:00","type":"task_carry_over","member":"dohyun","task_id":"TalkTime-JWT"}
+{"ts":"2026-04-26T14:55:58+09:00","type":"task_carry_over","member":"dohyun","task_id":"TalkTime-Infra"}
