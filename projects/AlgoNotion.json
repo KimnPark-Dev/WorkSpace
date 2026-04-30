@@ -68,11 +68,70 @@
     },
     {
       "id": "AlgoNotion-Platform",
-      "title": "타 플랫폼(LeetCode·Codeforces 등) 확장성 조사",
+      "title": "Codeforces 확장성 조사",
       "path": "./AlgoNotion_FE",
       "member": "taeho",
-      "priority": "medium",
-      "estimate_h": 3
+      "priority": "low",
+      "estimate_h": 2,
+      "background": "LeetCode는 ssong이 구현 담당으로 이관. Codeforces 제출 페이지 구조·언어 목록·결과 판별 방식 조사"
+    },
+    {
+      "id": "AlgoNotion-LeetCode-DOM",
+      "title": "LeetCode 문제 페이지 DOM 분석 및 선택자 확보",
+      "path": "./AlgoNotion_FE",
+      "member": "ssong",
+      "priority": "high",
+      "estimate_h": 1,
+      "background": "구현 전 선택자 안정성 먼저 검증. LeetCode는 React 기반이라 DOM이 동적으로 렌더링됨 — 정적 선택자가 바뀔 수 있어 data-cy·aria 속성 위주로 탐색",
+      "checklist": [
+        "문제 번호: URL slug 또는 DOM에서 추출 (예: /problems/two-sum/ → 'two-sum')",
+        "문제 제목: [data-cy='question-title'] 또는 .text-title-large",
+        "난이도: Easy·Medium·Hard 배지 선택자 확인",
+        "태그: 문제 하단 Topics 섹션 (초기엔 생략 가능)",
+        "언어 선택자: 코드 에디터 상단 드롭다운",
+        "제출 버튼: [data-e2e-locator='console-submit-button'] 또는 텍스트 기준",
+        "결과 팝업: 'Accepted' 텍스트가 나타나는 DOM 노드 위치 확인"
+      ]
+    },
+    {
+      "id": "AlgoNotion-LeetCode-Content",
+      "title": "leetcode_content.js 구현 (메타데이터 추출 + 제출 감지)",
+      "path": "./AlgoNotion_FE",
+      "member": "ssong",
+      "priority": "high",
+      "estimate_h": 3,
+      "background": "programmers_monaco_bridge.js를 MAIN world 스크립트로 그대로 재활용 가능 (LeetCode도 Monaco 에디터). 결과 감지는 MutationObserver로 결과 팝업 노드 감시",
+      "files": [
+        "content/leetcode_content.js (신규)",
+        "content/programmers_monaco_bridge.js (재활용 — MAIN world 주입)"
+      ],
+      "checklist": [
+        "extractMeta(): 문제 번호·제목·난이도·언어 추출",
+        "extractCode(): programmers_monaco_bridge.js postMessage 방식 그대로 활용",
+        "observeResult(): MutationObserver로 결과 컨테이너 감시 → 'Accepted' 판별",
+        "onAccepted(): chrome.runtime.sendMessage로 service_worker에 payload 전달",
+        "에러 케이스: Wrong Answer·Runtime Error는 전송하지 않음"
+      ]
+    },
+    {
+      "id": "AlgoNotion-LeetCode-Integration",
+      "title": "manifest.json + service_worker.js LeetCode 연동",
+      "path": "./AlgoNotion_FE",
+      "member": "ssong",
+      "priority": "high",
+      "estimate_h": 1,
+      "background": "content script 등록과 플랫폼 분기 추가. BOJ는 /status 페이지에서 감지하지만 LeetCode는 문제 풀이 페이지(/problems/*)에서 바로 감지",
+      "files": [
+        "manifest.json",
+        "background/service_worker.js"
+      ],
+      "checklist": [
+        "host_permissions에 'https://leetcode.com/*' 추가",
+        "content_scripts에 leetcode_content.js 등록 (matches: 'https://leetcode.com/problems/*')",
+        "programmers_monaco_bridge.js를 MAIN world로 LeetCode URL에도 주입",
+        "service_worker.js의 platform 분기에 'leetcode' 케이스 추가",
+        "payload_builder.js에서 LeetCode 플랫폼 포맷 처리 확인"
+      ]
     },
     {
       "id": "AlgoNotion-GitHub-OAuth",
