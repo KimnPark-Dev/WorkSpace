@@ -1,8 +1,53 @@
+# ===== 개인 설정 =====
 config.local.json
+
+# ===== 로컬 전용 작업 파일 =====
 tasks/
 .session-log.jsonl
 */.session-log.jsonl
 .workflow-sessions/
 .workflow-analysis/
-__pycache__/
+
+# ===== Claude =====
 .claude/settings.json
+
+# ===== macOS =====
+.DS_Store
+**/.DS_Store
+.AppleDouble
+.LSOverride
+
+# ===== Windows =====
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+
+# ===== Python =====
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+.Python
+*.egg-info/
+.venv/
+venv/
+.env
+
+# ===== Node.js =====
+node_modules/
+npm-debug.log*
+yarn-error.log*
+.pnpm-debug.log*
+
+# ===== IDE =====
+.vscode/settings.json
+.idea/
+*.suo
+*.user
+
+# ===== 빌드 산출물 =====
+dist/
+build/
+.next/
+out/
