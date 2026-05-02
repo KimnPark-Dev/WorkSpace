@@ -134,6 +134,16 @@
       ]
     },
     {
+      "id": "AlgoNotion-LeetCode-Test",
+      "title": "LeetCode 연동 QA 테스트 (docs/QA-leetcode.md 기준)",
+      "path": "./AlgoNotion_FE",
+      "member": "ssong",
+      "priority": "high",
+      "estimate_h": 1,
+      "background": "오늘 구현한 LeetCode content script 실제 동작 검증. QA-leetcode.md 22개 체크리스트 완료 후 main/service 브랜치 push",
+      "skills": ["AlgoNotion_FE/docs/QA-leetcode.md"]
+    },
+    {
       "id": "AlgoNotion-GitHub-OAuth",
       "title": "GitHub OAuth 연동 및 API 클라이언트 구현 (FE+BE)",
       "path": "./AlgoNotion_FE",
