@@ -13,3 +13,6 @@
 [submodule "TalkTime_BE"]
 	path = TalkTime_BE
 	url = git@github.com:KimnPark-Dev/TalkTime_BE.git
+[submodule "TalkTime_FE"]
+	path = TalkTime_FE
+	url = git@github.com:KimnPark-Dev/TalkTime_FE.git
