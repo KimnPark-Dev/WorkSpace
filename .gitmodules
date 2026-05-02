@@ -7,9 +7,6 @@
 [submodule "AlgoNotion_BE"]
 	path = AlgoNotion_BE
 	url = git@github.com:KimnPark-Dev/AlgoNotion_BE.git
-[submodule "TalkTime"]
-	path = TalkTime
-	url = git@github.com:KimnPark-Dev/TalkTime.git
 [submodule "TalkTime_BE"]
 	path = TalkTime_BE
 	url = git@github.com:KimnPark-Dev/TalkTime_BE.git

@@ -15,7 +15,7 @@
 | 프로젝트 | 상태 | 마감 | 레포 |
 |----------|------|------|------|
 | AlgoNotion | in-progress | 2026-04-30 | AlgoNotion_FE / AlgoNotion_BE |
-| TalkTime | in-progress | — | TalkTime/ |
+| TalkTime | in-progress | — | TalkTime_FE / TalkTime_BE |
 | AI-Hack-Camp-2026 | archived | 2026-04-24 | 없음 |
 
 ## 관리 중인 영역 (Areas)
@@ -45,9 +45,8 @@ WorkSpace/
 ├── analysis/               ← 분석 리포트
 ├── AlgoNotion_FE/          ← Chrome Extension (Vanilla JS)
 ├── AlgoNotion_BE/          ← FastAPI (Python)
-├── TalkTime/               ← 모노레포 (React + Node.js)
-│   ├── client/
-│   └── server/
+├── TalkTime_FE/            ← React + Vite (분리된 FE)
+├── TalkTime_BE/            ← Node.js + Socket.IO (분리된 BE)
 └── LLM_wiki/               ← Obsidian vault (서브모듈)
     └── sources/ideas/      ← 아이디어·Inbox 노트 (구 WorkSpace/ideas/)
 ```
