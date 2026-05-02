@@ -70,3 +70,12 @@
 {"ts":"2026-05-02T14:33:12+09:00","type":"task_carry_over","member":"ssong","task_id":"TalkTime-FE-Proximity"}
 {"ts":"2026-05-02T14:33:12+09:00","type":"task_carry_over","member":"ssong","task_id":"TalkTime-FE-Animation"}
 {"ts":"2026-05-02T14:33:12+09:00","type":"task_carry_over","member":"ssong","task_id":"TalkTime-Docs"}
+{"ts":"2026-05-02T05:47:36Z","type":"task_start","member":"ssong","task_id":"TalkTime-FE-Split","project":"TalkTime"}
+{"ts":"2026-05-02T06:37:13Z","type":"task_done","member":"ssong","task_id":"TalkTime-FE-Split"}
+{"ts":"2026-05-02T06:37:13Z","type":"task_carry_over","member":"ssong","task_id":"AlgoNotion-LeetCode-Test"}
+{"ts":"2026-05-02T06:37:13Z","type":"task_carry_over","member":"ssong","task_id":"AlgoNotion-SWEA"}
+{"ts":"2026-05-02T06:37:13Z","type":"task_carry_over","member":"ssong","task_id":"AlgoNotion-Monetize"}
+{"ts":"2026-05-02T06:37:13Z","type":"task_carry_over","member":"ssong","task_id":"TalkTime-GPS"}
+{"ts":"2026-05-02T06:37:13Z","type":"task_carry_over","member":"ssong","task_id":"TalkTime-FE-Proximity"}
+{"ts":"2026-05-02T06:37:13Z","type":"task_carry_over","member":"ssong","task_id":"TalkTime-FE-Animation"}
+{"ts":"2026-05-02T06:37:13Z","type":"task_carry_over","member":"ssong","task_id":"TalkTime-Docs"}
