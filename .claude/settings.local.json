@@ -10,7 +10,16 @@
       "Bash(git add *)",
       "Bash(git commit *)",
       "Bash(git push *)",
-      "Bash(git submodule *)"
+      "Bash(git submodule *)",
+      "Bash(git pull *)",
+      "Bash(git -C /Users/gim-insong/Desktop/WorkSpace log -1 --format=\"%D %h %s\")",
+      "Bash(git -C /Users/gim-insong/Desktop/WorkSpace/LLM_wiki log -1 --format=\"%D %h %s\")",
+      "Bash(git -C /Users/gim-insong/Desktop/WorkSpace/AlgoNotion_FE log -1 --format=\"%D %h %s\")",
+      "Bash(git -C /Users/gim-insong/Desktop/WorkSpace/AlgoNotion_BE log -1 --format=\"%D %h %s\")",
+      "Bash(git -C /Users/gim-insong/Desktop/WorkSpace/TalkTime log -1 --format=\"%D %h %s\")",
+      "Bash(git -C /Users/gim-insong/Desktop/WorkSpace/AlgoNotion_FE log --oneline --all -20)",
+      "Bash(git -C /Users/gim-insong/Desktop/WorkSpace/AlgoNotion_BE log --oneline --all -20)",
+      "Bash(git stash *)"
     ]
   }
 }
