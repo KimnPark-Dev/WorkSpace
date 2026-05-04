@@ -82,6 +82,8 @@
       "member": "ssong",
       "priority": "high",
       "estimate_h": 1,
+      "status": "done",
+      "done_at": "2026-05-02",
       "background": "구현 전 선택자 안정성 먼저 검증. LeetCode는 React 기반이라 DOM이 동적으로 렌더링됨 — 정적 선택자가 바뀔 수 있어 data-cy·aria 속성 위주로 탐색",
       "checklist": [
         "문제 번호: URL slug 또는 DOM에서 추출 (예: /problems/two-sum/ → 'two-sum')",
@@ -100,6 +102,8 @@
       "member": "ssong",
       "priority": "high",
       "estimate_h": 3,
+      "status": "done",
+      "done_at": "2026-05-02",
       "background": "programmers_monaco_bridge.js를 MAIN world 스크립트로 그대로 재활용 가능 (LeetCode도 Monaco 에디터). 결과 감지는 MutationObserver로 결과 팝업 노드 감시",
       "files": [
         "content/leetcode_content.js (신규)",
@@ -120,6 +124,8 @@
       "member": "ssong",
       "priority": "high",
       "estimate_h": 1,
+      "status": "done",
+      "done_at": "2026-05-02",
       "background": "content script 등록과 플랫폼 분기 추가. BOJ는 /status 페이지에서 감지하지만 LeetCode는 문제 풀이 페이지(/problems/*)에서 바로 감지",
       "files": [
         "manifest.json",
